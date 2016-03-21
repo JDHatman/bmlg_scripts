@@ -1,0 +1,19 @@
+#!/bin/bash
+
+#Install the printer driver package
+installer -pkg /usr/local/bmlg_assets/Ricoh_PS_Printers_Vol2_EXP_LIO_Driver.pkg -target /
+
+#Install the printer
+
+driver="/Library/Printers/PPDs/Contents/Resources/RICOH\ Aficio\ MP\ 5000"
+drivergz="/Library/Printers/PPDs/Contents/Resources/RICOH\ Aficio\ MP\ 5000.gz"
+
+if [[ -e $driver ]]; then
+lpadmin -p BMLG_1214_Main -L "BMLG 1214 Main" -E -v lpd://10.200.3.102 -P /Library/Printers/PPDs/Contents/Resources/RICOH\ Aficio\ MP\ 5000 -o printer-is-shared=false -o OptionTray=1Cassette -o Finisher=FinKING
+
+else
+lpadmin -p BMLG_1214_Main -L "BMLG 1214 Main" -E -v lpd://10.200.3.102 -P /Library/Printers/PPDs/Contents/Resources/RICOH\ Aficio\ MP\ 5000.gz -o printer-is-shared=false -o OptionTray=1Cassette -o Finisher=FinKING
+
+fi
+
+exit 0

@@ -1,0 +1,16 @@
+#!/bin/sh
+
+#Modify Energy Saver settings
+
+pmset -b displaysleep 30
+pmset -c displaysleep 60
+pmset -b disksleep 60
+pmset -c disksleep 0
+pmset -b sleep 60
+pmset -c sleep 0
+pmset -a womp 1
+pmset -b autorestart 0
+pmset -c autorestart 1
+
+
+exit 0

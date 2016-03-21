@@ -1,0 +1,7 @@
+#!/bin/bash
+
+#Ensure that remote login is enabled
+
+/usr/sbin/systemsetup -setremotelogin on
+
+exit 0

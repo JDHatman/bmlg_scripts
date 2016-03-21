@@ -1,0 +1,9 @@
+#!/bin/sh
+
+# Install Sophos Anti-Virus 9.x
+
+/usr/local/bmlg_assets/sophos/"Sophos Installer.app/Contents/MacOS/Sophos Installer" --install
+
+rm -rf /usr/local/bmlg_assets/sophos
+
+exit 0

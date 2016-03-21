@@ -1,0 +1,7 @@
+#!/bin/bash
+
+#Install the printer
+
+lpadmin -p BMLG_1221_Kelly -L "BMLG 1221 building Kelly's office" -E -v lpd://10.200.3.119 -P /Library/Printers/PPDs/Contents/Resources/RICOH\ Aficio\ SP\ C242DN.ppd -o printer-is-shared=false
+
+exit 0

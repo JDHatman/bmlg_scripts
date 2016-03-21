@@ -1,0 +1,7 @@
+#!/bin/sh
+
+#Configure Time Zone to set based off of current location.
+
+defaults write /Library/Preferences/com.apple.timezone.auto Active -bool true
+
+exit 0

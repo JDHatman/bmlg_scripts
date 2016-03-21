@@ -1,0 +1,7 @@
+#!/bin/sh
+
+#Enable File Sharing
+
+/bin/launchctl load -w /System/Library/LaunchDaemons/com.apple.AppleFileServer.plist
+
+exit 0

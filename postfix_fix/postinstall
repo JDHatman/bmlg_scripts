@@ -1,0 +1,11 @@
+#!/bin/bash
+
+echo "relayhost = secure.emailsrvr.com
+smtp_sasl_auth_enable = yes
+smtp_sasl_password_maps = hash:/etc/postfix/sasl_passwd
+smtp_sasl_mechanism_filter = AUTH LOGIN
+smtp_sasl_security_options =" >> /etc/postfix/main.cf
+
+postmap /etc/postfix/sasl_passwd
+
+exit 0

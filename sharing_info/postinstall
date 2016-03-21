@@ -1,0 +1,7 @@
+#!/bin/bash
+
+tar -jxvf /usr/local/bmlg_assets/sharing_info.app.tar.bz2 -C /usr/local/bmlg_assets/
+chmod -R 777 /usr/local/bmlg_assets/sharing_info.app
+rm -rf /usr/local/bmlg_assets/sharing_info.app.tar.bz2
+
+exit 0
