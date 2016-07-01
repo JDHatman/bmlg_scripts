@@ -1,0 +1,9 @@
+#!/bin/bash
+
+#Enable ARD agent for all users with access to all privileges
+
+/System/Library/CoreServices/RemoteManagement/ARDAgent.app/Contents/Resources/kickstart -configure -activate -allowAccessFor -allUsers -privs -DeleteFiles -TextMessages -ShowObserve -OpenQuitApps -GenerateReports -RestartShutDown -SendFiles -ChangeSettings -clientopts -setreqperm -reqperm yes
+
+touch /usr/local/bmlg_assets/.ard_enable
+
+exit 0

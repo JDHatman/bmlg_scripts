@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>_metadata</key>
+	<dict>
+		<key>created_by</key>
+		<string>root</string>
+		<key>creation_date</key>
+		<date>2016-06-28T19:29:33Z</date>
+		<key>munki_version</key>
+		<string>2.7.1.2764</string>
+		<key>os_version</key>
+		<string>10.11.5</string>
+	</dict>
+	<key>autoremove</key>
+	<false/>
+	<key>catalogs</key>
+	<array>
+		<string>testing</string>
+	</array>
+	<key>display_name</key>
+	<string>ard_enable</string>
+	<key>installcheck_script</key>
+	<string>#!/bin/sh
+
+PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/munki export PATH
+
+# this will run as a munki install_check script
+# exit status of 0 means install needs to run
+# exit status not 0 means no installation necessary
+
+# adapted scripts from  here: https://jamfnation.jamfsoftware.com/discussion.html?id=1989
+
+# we need to check wether ARD is running
+
+ardrunning=$(ps ax | grep -c -i "[Aa]rdagent")
+
+if [[ $ardrunning -eq 0 ]]; then
+	echo "ARD not running"
+	exit 0
+fi
+
+echo "all is well"
+
+exit 1
+</string>
+	<key>installer_type</key>
+	<string>nopkg</string>
+	<key>minimum_os_version</key>
+	<string>10.4.0</string>
+	<key>name</key>
+	<string>ard_enable</string>
+	<key>postinstall_script</key>
+	<string>#!/bin/bash
+
+#Enable ARD agent for all users with access to all privileges
+
+/System/Library/CoreServices/RemoteManagement/ARDAgent.app/Contents/Resources/kickstart -configure -activate -allowAccessFor -allUsers -privs -DeleteFiles -TextMessages -ShowObserve -OpenQuitApps -GenerateReports -RestartShutDown -SendFiles -ChangeSettings -clientopts -setreqperm -reqperm yes
+
+touch /usr/local/bmlg_assets/.ard_enable
+
+exit 0
+</string>
+	<key>unattended_install</key>
+	<true/>
+	<key>version</key>
+	<string>20160628</string>
+</dict>
+</plist>
+

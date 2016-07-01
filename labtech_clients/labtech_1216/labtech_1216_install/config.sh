@@ -1,0 +1,3 @@
+LT_SERVER_ADDRESS=https://rmm.concepttechnologyinc.com
+LT_SYSTEM_PASSWORD=uNNzXCHXUjY3DLPsfE5kNQ==
+LT_LOCATION_ID=282

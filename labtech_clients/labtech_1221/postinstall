@@ -1,0 +1,9 @@
+#!/bin/sh
+
+# Install LabTech client for the 1221 building
+
+/usr/sbin/installer -pkg /usr/local/bmlg_assets/labtech_1221_install/LTSvc.mpkg -target /
+
+rm -rf /usr/local/bmlg_assets/labtech_1221_install
+
+exit 0

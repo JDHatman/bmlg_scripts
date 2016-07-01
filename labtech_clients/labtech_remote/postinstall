@@ -1,0 +1,9 @@
+#!/bin/sh
+
+# Install LabTech client for Remote users.
+
+/usr/sbin/installer -pkg /usr/local/bmlg_assets/labtech_remote_install/LTSvc.mpkg -target /
+
+rm -rf /usr/local/bmlg_assets/labtech_remote_install
+
+exit 0

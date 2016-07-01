@@ -141,7 +141,7 @@ oldhomelocal=`ssh $oldusername@$ipaddress 'pwd'`
 clear
 echo -e "\nCalculating size of data to be copied..."
 #oldhomefoldersize=`ssh $oldusername@$ipaddress 'du -s -I Library -I "Microsoft User Data" -I ".Trash" ~ | awk '\''{ print $1 }'\'''`
-oldhomefoldersize=`rsync -ae ssh --info=progress2 --recursive --links --group --owner --perms --times --update --dry-run --exclude 'Library' --exclude 'Microsoft User Data' $oldusername@$ipaddress:~ $newhomelocal | awk '{print $2}' | sed 's/,//g'`
+oldhomefoldersize=`rsync -ae ssh --info=progress2 --recursive --links --group --owner --perms --times --update --dry-run --exclude 'Library' --exclude 'Microsoft User Data' --exclude 'Box Sync' --exclude 'Dropbox' $oldusername@$ipaddress:~ $newhomelocal | awk '{print $1}' | sed 's/,//g'`
 
 #oldhomefoldersize2=`echo "$(($oldhomefoldersize * 512))"`
 #echo $oldhomefoldersize2
@@ -174,7 +174,7 @@ fi
 clear
 echo -e "\nAbout to start the copy process.\n"
 read -p "What is your email address?" emailaddress
-if [ $oldhomefoldersize -gt 11000000 ]; then
+if [ $oldhomefoldersize -gt 5000000000 ]; then
   echo -e "\nThere is more than 5GB of data to copy.\nGo relax. This might take a while.\nYou will receive an email summary when it's finished.\n"
   read -p "Press any key to continue..."
 else
@@ -268,7 +268,7 @@ sleep 1
 # Extraneous folders in the home directory
 echo -e "\nEvaluating extraneous folders in the user's home directory..."
 IFS=$'\n'
-exfoldersarray=( $(ssh $oldusername@$ipaddress 'ls -d */ | sed s'\''/\/$//'\'' | grep -v -e "Applications" -e "Desktop" -e "Documents" -e "Downloads" -e "Movies" -e "Pictures" -e "Music" -e "Public" -e "Library"'))
+exfoldersarray=( $(ssh $oldusername@$ipaddress 'ls -d */ | sed s'\''/\/$//'\'' | grep -v -e "Applications" -e "Desktop" -e "Documents" -e "Downloads" -e "Movies" -e "Pictures" -e "Music" -e "Public" -e "Library" -e "Box Sync" -e "Dropbox"'))
 unset $IFS
 
 if [ -z "$exfoldersarray" ]; then

@@ -1,0 +1,14 @@
+#!/bin/bash
+
+# Create the Account
+
+dscl . create /Users/bmlgitadmin
+dscl . create /Users/bmlgitadmin UserShell /bin/bash
+dscl . create /Users/bmlgitadmin RealName "BMLG IT Admin"
+dscl . create /Users/bmlgitadmin UniqueID 510
+dscl . create /Users/bmlgitadmin PrimaryGroupID 20
+dscl . create /Users/bmlgitadmin NFSHomeDirectory /Local/Users/bmlgitadmin
+dscl . passwd /Users/bmlgitadmin V1ctoryL@ne!
+dscl . append /Groups/admin GroupMembership bmlgitadmin
+
+exit 0
