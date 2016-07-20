@@ -37,6 +37,10 @@ sophos_install/sophos/
 
 Printers/BMLG_testgit/RICOH/
 
+<<<<<<< Updated upstream
 *.mpkg
 
 *.bz2
+=======
+sharing_info/sharing_info.app.tar.bz2
+>>>>>>> Stashed changes
